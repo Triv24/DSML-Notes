@@ -212,4 +212,17 @@ df.drop('salary', axis = 1) # deletes the column named 'salary'
 ```py
 df.describe() # Statistical summary of the dataframe
 
+df.dtypes # Data types of every column
+
+```
+
+```py
+# Handling Missing values :
+
+df.isnull().any(axis=1)
+
+df.isnull().sum()
+
+df['sales_new'] = df['sales'].fillna() 
+
 ```

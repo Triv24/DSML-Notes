@@ -249,7 +249,11 @@ df['salary'] = [5000, 6000, 7000]
 
 df.drop('salary') # will return error, because default value of axis is zero representing row
 
-df.drop('salary', axis = 1) # deletes the column named 'salary'
+df.drop('salary', axis = 1, inplace = True) # deletes the column named 'salary'
+# inplace is used for permanent changes in dataframe.
+
+# Increment every value in a column :
+df['age'] = df['age'] + 1
 
 ```
 
@@ -262,13 +266,145 @@ df.dtypes # Data types of every column
 
 ```
 
-```py
-# Handling Missing values :
 
+# Data Manipulation and Analysis with `Pandas` library :
+
+### Handling Missing values
+
+```py
 df.isnull().any(axis=1)
 
 df.isnull().sum()
 
-df['sales_new'] = df['sales'].fillna() 
+df['sales_new'] = df['sales'].fillna(df['sales'].mean()) 
 
+new_df = df.fillna(0.0)
+```
+
+### Renaming columns :
+```py
+df = df.rename(columns = {'salary' : 'new_salary'})
+```
+
+### Changing data types
+
+```py
+df['value_new'] = df['value'].astype(int)
+# -- chnages from its tyoe to int
+```
+
+### `apply()` function in pandas :
+
+```py
+df['new value'] = df['value'].apply(lambda x : x*2)
+# applies a custom function to each and every value.
+```
+
+## Data Aggregating and Grouping :
+
+```py
+grouped_mean = df.groupby('Product')['value'].mean()
+# groups acc. to column - product, the mean of the column value
+
+# we can also group them based on 2 categories :
+grouped_by_2_columns = df.groupby(['Product','region'])['value'].sum()
+```
+
+#### Outputs :
+
+|Product	   |                      |
+|----------|-------------------------------|
+|product 1  | 46.111       |
+|product 2  | 96.341       |
+|product 3  | 49.111       |
+
+|Product    |  Region     |             |
+|-----------|-------------|-------------|
+|product 1  | east        |49.111       |
+|           | west        |49.111       |
+|           | north       |49.111       |
+|           | south       |49.111       |
+|product 2  | east        |49.111       |
+|           | west        |49.111       |
+|           | north       |49.111       |
+|           | south       |49.111       |
+|product 3  | east        |49.111       |
+|           | west        |49.111       |
+|           | north       |49.111       |
+|           | south       |49.111       |
+
+### Multiple Aggregate functions :
+
+```py
+grouped_by = df.groupby('Region')['value'].agg(['mean', 'sum', 'count'])
+```
+
+#### Output :
+
+|Region      |  mean     |   sum       | count    |
+|------------|-----------|-------------|----------|
+| east       | east      |49.111       |  13      |
+| west       | west      |49.111       |  09      |
+| north      | north     |49.111       |  25      |
+| south      | south     |49.111       |  67      |
+
+### Merging and Joining DataFrames :
+- `merge()` function in pandas is same as that of `JOIN` in `SQL`.
+- Parameters of `merge()` :
+    1. df1
+    2. df2
+    3. `on` -- `on="Key"`
+    4. `how` -- `how = "inner"` 
+> `on` represents the column on which we perform join 
+> `how` represents the type of JOIN from : INNER, LEFT, RIGHT, OUTER
+
+```py
+pd.merge(df1, df2, on="salary", how="inner")
+```
+
+## Reading Data from various Data Sources in Pandas :
+
+- From json :
+```py
+import pandas as pd
+from io import StringIO
+
+Data = ' {"name" : {"id" : 1, "roll" : 23}}'
+
+df = pd.read_json(StringIO(Data)) # convert json to the dataFrame
+df.to_json() # convert df back to json
+df.to_json(orient="record")
+```
+
+- from csv URL :
+```py
+df = pd.read_csv("https://urlpath.in")
+df.to_csv("file_location") # convert back to csv
+```
+
+- from HTML URL :
+
+```py
+df = pd.read_html("https://htmlpath.in")
+# It will have to install some dependencies. U will get to know abt those once u run this code. 
+
+df = pd.read_html(url, match = "country", header=0)[0] # [0] is done because a list of tables is returned.
+```
+
+- from Excel file :
+    - You will have to install the `openpyxl` for this function to work
+
+```py
+!pip install openpyxl
+
+df = pd.read_excel('file.xlsx')
+```
+
+- convert to pickel_file :
+
+```py
+df_excel.to_pickle("df_excel")
+
+# reading pickle files 
+pd.read_pickle("filepath")
 ```

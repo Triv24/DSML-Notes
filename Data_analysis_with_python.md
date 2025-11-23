@@ -7,6 +7,12 @@
     - matrices
 - collection of mathematical functions to operate on them
 
+ ## ` WHY NUMPY` :
+- They are faster
+- NumPy stores only one type of data together, so memory is saved.
+- They allow mathematical operations directly
+- They are used in fields like Machine Learning, Data Science, Artificial Intelligence, Deep Learning, Image Processing.
+
 ```py
 !pip install numpy
 ```
@@ -111,11 +117,51 @@ data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 data[(data > 5) & (data < 8)]
 ```
 
----
+### Sorting in NumPy
+-We can sort elements of a NumPy array using np.sort().
 
+-Sorting a 1D array
+```py
+import numpy as np
+
+unsorted = np.array([4, 3, 7, 5])
+print(np.sort(unsorted))
+```
+-Sorting a 2D array
+```py
+arr_2d = np.array([[1, 2, 3], [6, 7, 3]])
+print(np.sort(arr_2d))                  # sorts row-wise (axis = 1)
+print(np.sort(arr_2d, axis = 0))        # sorts column-wise (axis = 0)
+
+```
+###Axis Concept 
+-Each dimension in a NumPy array is called an axis.
+-Axes are numbered starting from 0.
+
+|Type of array	|No. of axes	| Meaning                                       |
+|---------------|---------------|-----------------------------------------------|
+|1D array	    |1 axis	        |axis 0                                         |
+|2D array	    |2 axes	        |axis 0 → rows, axis 1 → columns                |
+|3D array	    |3 axes	        |axis 0 → depth, axis 1 → rows, axis 2 → columns|
+
+
+### Easy Trick to Remember (IMP)
+
+|Axis	   | Direction                     |
+|----------|-------------------------------|
+|axis = 0  |Down the rows (vertical)       |
+|axis = 1  |Across the columns (horizontal)|
+
+## Example visualization
+
+axis 0 ↓ (vertical)
+[ 1  2  3 ]
+[ 4  5  6 ]
+   → axis 1 → (horizontal)
+---
 ## Pandas - Dataframe and Series :
 
-- powerful data manipulation linrary
+- powerful data manipulation library
 - used for data analysis and data cleaning
 
 - 2 primary Data Structures :

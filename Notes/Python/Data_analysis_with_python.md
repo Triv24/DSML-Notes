@@ -408,3 +408,273 @@ df_excel.to_pickle("df_excel")
 # reading pickle files 
 pd.read_pickle("filepath")
 ```
+
+# Data Visualisation with `Matplotlib` :
+
+- `Matplotlib` is a powerful plotting library for python that enables the creation of static, animated, and interactive visualisations. It is widely used for data visualisation in data science and analytics. 
+
+- `!pip install matplotlib`
+
+```py
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+
+# create line plot :
+plt.plot(x, y)
+plt.xlabel( 'X - axis')
+plt.ylabel( 'Y - axis')
+plt.title("Basic Line Plot")
+plt.show()
+```
+
+- Output :
+
+![Output of the graph](image.png)
+
+- Creating a customised line Plot :
+
+```py
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+
+plt.plot(x, y, color = "red") # output 1
+
+plt.plot(x, y, color = "red", linestyle= "-") # output 2
+
+plt.plot(x, y, color = "red", linestyle= "-.") # output 3
+
+plt.plot(x, y, color = "red", linestyle= "-", marker="o", linewidth=3) # output 4
+
+```
+1. output 1 :
+
+![Output 1](image-1.png)
+
+2. Output 2 :
+
+![Output 2](image-2.png)
+
+3. Output 3 :
+
+![Output 3](image-3.png)
+
+4. Output 4 :
+
+![Output 4](image-4.png)
+
+```py
+plt.grid(True)
+```
+- Output : 
+
+![Grid](image-5.png)
+
+### Multiple Plots :
+- Multiple plots in one window
+```py
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(2, 2) # 2 rows and 2 cols = 4 plots
+fig, ax = plt.subplots(1, 2, figsize= (9,9)) # 1 row and 2 cols = 2 plots
+# figsize sets the window size to show plots 
+
+plt.show()
+```
+
+- Actually adding values to the subplots :
+
+```py
+x1 = [1, 2, 3, 4, 5]
+y1 = [1, 4, 9, 16, 25]
+
+x2 = [2, 4, 6, 8, 10]
+y2 = [10, 20, 30, 40 , 50]
+
+x3 = [0.2 , 0.4, 0.6, 0.8, 0.9]
+y3 = [25, 45, 65, 85, 95]
+
+fig, ax = plt.subplots(2, 2)
+
+# plot in 1st row , 1st col : [0, 0]
+ax[0,0].plot(x1, y1)
+
+# plot in 1st row, 2nd col : [0,1]
+ax[0,1].plot(x2, y2)
+
+# plot in 2st row, 1nd col : [1, 0]
+ax[1, 0].plot(x3, y3)
+
+plt.show()
+```
+
+- Output :
+
+![Multiple Plots](image-6.png)
+
+#### Setting titles to subplots :
+
+```py
+fig, ax = plt.subplots(2,2)
+
+ax[0,0].title.set_text("Title 1") # sets the title for the subplot in 1st row and 1st col
+```
+
+#### Shared axes :
+- Shared axis sets the same scale for multiple subplots in a window based on an axes and also rows, cols or all
+- It is needed when we are plotting similar data but, the plot is of different scale on the axes. 
+- So, we need to get the same scale for all the subplots to actually be able to compare these subplots.
+
+```py
+fig, ax = plt.subplots(2, 2, sharex="all") # share the scale of x axis, for all subplots
+fig, ax = plt.subplots(2, 2, sharex="row") # share the scale of x axis for subplots in same row, for all columns
+fig, ax = plt.subplots(2, 2, sharey="col") # share the scale of y-axis for subplots in same cols
+fig, ax = plt.subplots(2, 2, sharey="all")
+```
+
+
+| Not Shared axis            | Shared Y-axis                |
+|----------------------------|------------------------------|
+|![Not Shared](image-7.png)  | ![Shared Y-Axis](image-8.png)|
+|```py                       | ```py                        |
+|fig, ax = plt.subplots(2, 2)| fig, ax = plt.subplots(2, 2, sharey="row")|
+|ax[0,0].plot(x1, y1)        | ax[0,0].plot(x1, y1)         |
+|ax[0,1].plot(x2, y2)        | ax[0,1].plot(x2, y2)         |
+|ax[1,0].plot(x3, y3)        | ax[1,0].plot(x3, y3)         |
+|ax[1,1].plot(x1, y1)        | ax[1,1].plot(x1, y1)         |
+|```                         |```                           |
+
+### Multiple Plots by Krish Naik : (Another Method)
+- we have used the `subplots()` method
+- But, now we will use the `subplot()` method :
+- so with that, the title  method also changes.
+- We used to do `ax[0, 1].title.set_text("Title 1")`,
+    - Now, we just do `plt.title("Title 1")`.
+
+```py
+plt.figure(figsize = (9,5))
+
+plt.subplot(2, 2, 4) # It suggests that there are 2 rows, 2 cols and in these we have to fit the 3rd graph
+plt.plot(x1, y1, color="red")
+plt.title("Plot 3")
+
+plt.subplot(2, 2, 1) # it suggests the 1st subplot in the 2-by-2 plot arrangement
+plt.plot(x2, y2, color="green")
+plt.title("plot 1")
+
+```
+
+Output : 
+
+![the subplots](image-9.png)
+
+## Bar plots in Matplotlib :
+
+- Bar plots in matplotlib are the graphs present in the form of bar graphs.
+- We need to import the same as before.
+
+```py
+import matplotlib.pyplot as plt
+
+categories = [ 'A', 'B', 'C' ]
+values = [3, 9, 81]
+
+plt.bar(categories, values, color="blue")
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Bar Plot')
+plt.show()
+
+```
+
+Output : 
+
+![Bar Plot](image-10.png)
+
+## Histograms in Matplotlib :
+- Histograms are used to represent the distribution of a dataset. They divide the data into bins and count the number of data points in each bin.
+
+```py
+# Sample data 
+data = [1, 2, 2, 3, 3, 2, 4, 3, 5, 5, 4, 5, 3, 1, 2, 4, 4, 3, 5, 3]
+
+# Create Histogram 
+plt.hist(data, bins=5, color="green", edgecolor="black")
+```
+
+Output :
+
+![Histogram](image-11.png)
+
+### Create a scatter plot :
+
+```py
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 0]
+
+plt.scatter(x, y, color="green", marker = "o")
+```
+
+Output :
+
+![Scatter Plot](image-12.png)
+
+### Pie Charts :
+
+```py
+labels = ['a', 'b', 'c']
+sizes = [30, 20, 60]
+colors = ['gold', 'yellowgreen', 'lightcoral']
+explode = (0.2, 0, 0)
+plt.pie(sizes, labels=labels, colors=colors, autopct="%1.1f%%")
+```
+
+Output :
+
+![Pie Chart without explode](image-13.png)
+
+- using one more attrinute : `explode` :
+- It take that piece out of the pie chart 
+`plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct="%1.1f%%")`
+
+Output :
+
+![Pie chart with explode](image-14.png)
+
+## Practical examples in Matplotlib :
+
+### Sales Data Visualisation :
+
+```py
+import pandas as pd
+
+sales_data_df = pd.read_csv(file_name)
+
+## Plot total sales by products :
+total_sales_by_category = sales_data_df.groupby('Item Type')['Total Revenue'].sum()
+print(total_sales_by_category)
+```
+
+Output will be just text data :
+
+![Without Data visualisation](image-15.png)
+
+- But if we were to represent this data visually :
+
+```py
+import pandas as pd
+
+sales_data_df = pd.read_csv(file_name)
+
+## Plot total sales by products :
+total_sales_by_category = sales_data_df.groupby('Item Type')['Total Revenue'].sum()
+print(total_sales_by_category)
+
+total_sales_by_category.plot(kind="bar", color="lightcoral")
+```
+
+Then the output is :
+
+![With data visualisation](image-16.png)
+

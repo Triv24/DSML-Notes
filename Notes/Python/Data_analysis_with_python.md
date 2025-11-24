@@ -678,3 +678,143 @@ Then the output is :
 
 ![With data visualisation](assets/image-16.png)
 
+# Data Visulaisation with Seaborn :
+
+- Seaborn is a Python Visualisation library based on MAtplotlib that provides a high-level interface for drawing attractive and informative statistical graphics. 
+- Seaborn helps in creating complex visualisations with just a few lines of code. 
+
+```py
+!pip install seaborn
+```
+
+### Basic Plotting with seaborn
+
+```py
+import seaborn as sns
+
+tips = sns.load_dataset('tips')
+# there are many built-in datasets already available in seaborn.
+# `tips` is one of them 
+```
+
+tips dataset :
+
+![Tips dataset](assets/image-17.png)
+
+#### Create a scatter plot using seaborn :
+
+```py
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.scatterplot(x='total_bill', y='tip', data=tips)
+plt.title("Scatter Plot")
+plt.show()
+```
+
+Output :
+
+![Scatter plot using seaborn](assets/image-18.png)
+
+#### Create Line Plot in Seaborn :
+
+```py
+sns.lineplot(x='size', y='total_bill', data=tips)
+plt.title("Line Plot")
+plt.show()
+```
+Output :
+
+![Line Plot with Seaborn](assets/image-19.png)
+
+#### categorical Plots using Seaborn :
+- Categorical Plots use Categorical variables
+
+```py
+sns.barplot(x='day', y='total_bill', data=tips)
+plt.title("Bar Plot")
+plt.show()
+```
+
+Output :
+
+![Bar plot with Seaborn](assets/image-20.png)
+
+#### Box Plot using Seaborn :
+
+```py
+sns.boxplot(x='day', y='total_bill', data=tips)
+plt.show()
+```
+
+Output :
+
+![Box Plot with Seaborn](assets/image-21.png)
+
+#### Violing Plot :
+
+```py
+sns.violinplot(x='day', y='total_bill', data=tips)
+plt.show()
+```
+
+Output :
+
+![Violin Plot](assets/image-22.png)
+
+### Histograms in Seaborn :
+
+```py
+sns.histplot(tips['total_bill'], bins=10, kde=True)
+plt.show()
+```
+
+Output :
+
+![Histogram](assets/image-23.png)
+
+> The curve in the histogram is because of `kde=True`
+
+#### KDE Plot ;
+
+```py
+sns.kdeplot(tips['total_bill'], fill=True)
+```
+
+Output :
+
+![KDE Plot](assets/image-24.png)
+
+#### Paiplot :
+
+- Every relation will be plotted
+
+```py
+sns.pairplot(tips)
+```
+
+Output :
+
+![Pairplot](assets/image-25.png)
+
+#### Heatmap :
+
+```py
+corr = tips[['total_bill', 'tip', 'size']].corr()
+sns.heatmap(corr,annot=True, cmap = "coolwarm")
+```
+
+Output :
+
+![HeatMap](assets/image-26.png)
+
+#### Plot total revenue vs product category by sum()
+
+```py
+plt.figure(figsize = (10,6))
+sns.barplot(x='Item Type', y='Total Revenue', data="sales_data_df", estimator=sum)
+```
+
+Output :
+
+![Barplot from dataframe](assets/image-27.png)

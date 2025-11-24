@@ -63,7 +63,7 @@ emp_data = [
 ]
 
 cursor.executemany(
-    'INSERT INTO employees (name ,age,department) VALUES (?, ?, ?, ?)',
+    'INSERT INTO employees (name ,age,department) VALUES (?, ?, ?)',
     emp_data
 )
 connection.commit()
@@ -74,7 +74,7 @@ connection.commit()
 ## `Updating a Table (employees)`:
 
 ```py
-cursor.execute('"UPDATE employees SET age = 34 WHERE name = 'Krish''")
+cursor.execute("UPDATE employees SET age = 34 WHERE name = 'Krish'")
 connection.commit()
 
 ```
@@ -83,7 +83,7 @@ connection.commit()
 ## `Deleting data from  Table (employees)`:
 
 ```py
-cursor.execute('''DELETE FROM employees WHERE name = 'Bob'''')
+cursor.execute("DELETE FROM employees WHERE name = 'Bob'")
 connection.commit()
 
 ```
@@ -94,5 +94,11 @@ cursor.execute("SELECT * FROM employees")
 rows = cursor.fetchall()
 for row in rows:
     print(row)
+
+```
+## Close Connection
+
+```py
+connection.close()
 
 ```

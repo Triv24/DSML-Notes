@@ -431,7 +431,7 @@ plt.show()
 
 - Output :
 
-![Output of the graph](image.png)
+![Output of the graph](assets/image.png)
 
 - Creating a customised line Plot :
 
@@ -450,26 +450,26 @@ plt.plot(x, y, color = "red", linestyle= "-", marker="o", linewidth=3) # output 
 ```
 1. output 1 :
 
-![Output 1](image-1.png)
+![Output 1](assets/image-1.png)
 
 2. Output 2 :
 
-![Output 2](image-2.png)
+![Output 2](assets/image-2.png)
 
 3. Output 3 :
 
-![Output 3](image-3.png)
+![Output 3](assets/image-3.png)
 
 4. Output 4 :
 
-![Output 4](image-4.png)
+![Output 4](assets/image-4.png)
 
 ```py
 plt.grid(True)
 ```
 - Output : 
 
-![Grid](image-5.png)
+![Grid](assets/image-5.png)
 
 ### Multiple Plots :
 - Multiple plots in one window
@@ -511,7 +511,7 @@ plt.show()
 
 - Output :
 
-![Multiple Plots](image-6.png)
+![Multiple Plots](assets/image-6.png)
 
 #### Setting titles to subplots :
 
@@ -536,7 +536,7 @@ fig, ax = plt.subplots(2, 2, sharey="all")
 
 | Not Shared axis            | Shared Y-axis                |
 |----------------------------|------------------------------|
-|![Not Shared](image-7.png)  | ![Shared Y-Axis](image-8.png)|
+|![Not Shared](assets/image-7.png)  | ![Shared Y-Axis](assets/image-8.png)|
 |```py                       | ```py                        |
 |fig, ax = plt.subplots(2, 2)| fig, ax = plt.subplots(2, 2, sharey="row")|
 |ax[0,0].plot(x1, y1)        | ax[0,0].plot(x1, y1)         |
@@ -567,7 +567,7 @@ plt.title("plot 1")
 
 Output : 
 
-![the subplots](image-9.png)
+![the subplots](assets/image-9.png)
 
 ## Bar plots in Matplotlib :
 
@@ -590,7 +590,7 @@ plt.show()
 
 Output : 
 
-![Bar Plot](image-10.png)
+![Bar Plot](assets/image-10.png)
 
 ## Histograms in Matplotlib :
 - Histograms are used to represent the distribution of a dataset. They divide the data into bins and count the number of data points in each bin.
@@ -605,7 +605,7 @@ plt.hist(data, bins=5, color="green", edgecolor="black")
 
 Output :
 
-![Histogram](image-11.png)
+![Histogram](assets/image-11.png)
 
 ### Create a scatter plot :
 
@@ -618,7 +618,7 @@ plt.scatter(x, y, color="green", marker = "o")
 
 Output :
 
-![Scatter Plot](image-12.png)
+![Scatter Plot](assets/image-12.png)
 
 ### Pie Charts :
 
@@ -632,7 +632,7 @@ plt.pie(sizes, labels=labels, colors=colors, autopct="%1.1f%%")
 
 Output :
 
-![Pie Chart without explode](image-13.png)
+![Pie Chart without explode](assets/image-13.png)
 
 - using one more attrinute : `explode` :
 - It take that piece out of the pie chart 
@@ -640,7 +640,7 @@ Output :
 
 Output :
 
-![Pie chart with explode](image-14.png)
+![Pie chart with explode](assets/image-14.png)
 
 ## Practical examples in Matplotlib :
 
@@ -658,7 +658,7 @@ print(total_sales_by_category)
 
 Output will be just text data :
 
-![Without Data visualisation](image-15.png)
+![Without Data visualisation](assets/image-15.png)
 
 - But if we were to represent this data visually :
 
@@ -676,5 +676,5 @@ total_sales_by_category.plot(kind="bar", color="lightcoral")
 
 Then the output is :
 
-![With data visualisation](image-16.png)
+![With data visualisation](assets/image-16.png)
 

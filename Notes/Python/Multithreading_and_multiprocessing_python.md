@@ -15,7 +15,9 @@
 ---
 
 ## What is a Thread?
-- Smallest unit of execution inside a process.
+- Unit of execution within a process.
+- single threaded process - one single thread running at a time.
+- multi-threaded process
 - Multiple threads run within the same process.
 - Threads share:
   - Code segment
@@ -39,13 +41,19 @@
 - Best for I/O Bound tasks (waiting time tasks)
 - Example: File download, Web scraping, Database operations.
 
+### When to use multi-threading ?
+1. I/O Bound your applicationtasks : Tasks that spend more time waiting for I/O operations
+2. Concurrent execution : When you want to improve the throughput of 
+
 ### 1.Import Module
 
 ```py
 import threading
 import time
 ```
+
 ### 2.Multithreaded Execution
+
 ```py
 def print_numbers():
     for i in range(5):
@@ -59,17 +67,23 @@ def print_letters():
 
 t1 = threading.Thread(target=print_numbers)
 t2 = threading.Thread(target=print_letters)
+
+
+# Starting the thread
 t1.start()
 t2.start()
+
+# Wait for the thread to be completed and then simply join to the main thread
 t1.join()
 t2.join()
 
 ```
 ---
-## ' What is Multiprocessing?  
+
+## What is Multiprocessing?  
 - Running multiple processes in parallel.
-- Best for CPU Bound tasks (heavy computation).
-- Uses multiple CPU cores.
+- Best for **CPU Bound tasks** (heavy computation).
+- Uses **multiple CPU cores**.
  
 
 ### 1.Import Module
@@ -90,17 +104,22 @@ def cube():
         time.sleep(1.5)
 
 if __name__ == "__main__":
+
     p1 = multiprocessing.Process(target=square)
     p2 = multiprocessing.Process(target=cube)
+
+    # Start the processes
     p1.start()
     p2.start()
+
+    # wait for the processes to complete
     p1.join()
     p2.join()
 
 ```
 
 ---
-## ThreadPoolExecutor (Multithreading)
+## `ThreadPoolExecutor` (Multithreading) :
 
 - Used for multithreading.
 - Runs tasks using multiple threads inside one process.
@@ -130,7 +149,7 @@ for r in results:
 ```
 
 ---
-## ProcessPoolExecutor (Simplified Multiprocessing)
+## `ProcessPoolExecutor` (Simplified Multiprocessing)
 - Used for multiprocessing.
 - Runs tasks using multiple processes across CPU cores.
 - It manages a pool of processes automatically, so you don’t need to create    processes manually.
@@ -161,14 +180,14 @@ for r in results:
 
 ---
 ## Real-World Use Cases
-|Technique      |Best Used For                                                  |
-|---------------|---------------------------------------------------------------|
-|Multithreading	|I/O bound tasks (web scraping, file/network operations)        |
+|Technique       |Best Used For                                                  |
+|--------------- |---------------------------------------------------------------|
+|Multithreading	 |I/O bound tasks (web scraping, file/network operations)        |
 |Multiprocessing |CPU bound tasks (mathematics, ML training, video/image  processing)|
 
 ---
-## Web Scraping 
-- Web scraping often involves many network requests to fetch web pages.
+## Web Scraping :
+- Web scraping often involves making numerous network requests to fetch web pages.
 - These tasks are **I/O bound** because they wait for server responses. 
 - Multithreading improves performance by allowing multiple pages to be fetched concurrently.
 
@@ -189,7 +208,7 @@ urls = [
 -We need:
     - threading for creating threads
     - requests for HTTP requests
-    - bs4 (BeautifulSoup) for parsing HTML
+    - `bs4` (BeautifulSoup) for parsing HTML
 
 ```py
 import threading
@@ -199,6 +218,7 @@ from bs4 import BeautifulSoup
 
 ### Defining the Web Scraping Function
 - A simple function to fetch a URL and print the number of characters in the page text:
+
 ```py
 def fetch_contents(url):
     try:
@@ -208,6 +228,18 @@ def fetch_contents(url):
         print(f"Fetched {len(soup.get_text())} characters from {url}")
     except requests.RequestException as e:
         print(f"Failed to fetch {url}: {e}")
+
+threads = []
+
+# creating and starting threads :
+for url in urls :
+    thread = threading.Thread(target=fetch_contents, args = (url))
+    threads.append(thread)
+    thread.start()
+
+# Waiting for thread to be completed :
+for thread in threads :
+    thread.join()
       
 ```
 
@@ -215,6 +247,45 @@ def fetch_contents(url):
 - timeout prevents hanging.
 - raise_for_status() raises for HTTP errors.
 - soup.get_text() extracts visible text.
+
+
+## Real-World implementation of Multiprocessing :
+- Real world Example : Multiprocessing for **CPU Bound Tasks**
+- **Scenario** : Factorial calculation
+
+- Factorial calculations, especially for large numbers, involve significant computational work. 
+- Multiprocessing can be used to distribute the workload across multiple CPU cores, improving performance.
+
+```py
+import multiprocessing
+import math
+import sys
+import time
+
+# Increase the maximum number of digits for integer conversion
+sys.set_int_max_str_digits(100000)
+
+## Function to compute factorial of a given number
+def compute_factorial (number) :
+    print("Factorial : ")
+    result = math.factorial(number)
+    return result
+
+if __name__ == "__main__" :
+    numbers = [5000, 6000, 70000]
+
+    start_time = time.time()
+
+    ## Create a pool of worker processes
+    with multiprocessing.Pool() as pool :
+        results = pool.map(compute_factorial, numbers)
+
+    end_time = time.time()
+
+    print(end_time - start_time)
+
+    print(results)
+```
 
 ---
 ## Key Takeaways:

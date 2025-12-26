@@ -54,10 +54,10 @@
     - 
 
 2. **Median :**
-    a. Sort the numbers
-    b. find the central element
-        i. if odd elements then central element
-        ii. if even elements then central element is avg of the two mid numbers
+    1. Sort the numbers
+    2. find the central element
+        - if odd elements then central element
+        - if even elements then central element is avg of the two mid numbers
     
     - median helps us mitigate the impact of `outliers`.
 
@@ -101,23 +101,23 @@
 
 # Variables :
 
-**Defn :** Variable is a property that can take up any value.
+    **Defn :** Variable is a property that can take up any value.
 
 ### Different types of variables :
 
-    1. **Quantitative**
-        i. Discrete -- whole number 
-            - examples : number of students in a class
-        ii. Continuous -- any fraction
-            - example : height, weight
-    2. **Qualitative / Categorical**
-        - example : gender = [Male, Female]
-        - Colors = [Red, Green , Blue]
+1. **Quantitative**
+    1. **Discrete** -- whole number 
+        - examples : number of students in a class
+    2. **Continuous** -- any fraction
+        - example : height, weight
+2. **Qualitative / Categorical**
+    - example : gender = [Male, Female]
+    - Colors = [Red, Green , Blue]
 
 ![Variables](assets/image5.png)
 
 ## Random Variables :
-- it is a function whose values are derived from different proccesses or experiments
+    It is a function whose values are derived from different proccesses or experiments
 
 ### Different types of random variables :
     1. Discrete -- tossing a coin
@@ -131,4 +131,105 @@
 - There is a concept called `Kernel Density Estimation` that smoothens the curve of the histogram, this smoothened curve will give the probability distribution function.
 
 ![Histograms](assets/image6.png)
+
+# Percentile :
+    A percentile is a value below which certain percentage of distributions lie.
+
+- example :
+    - {2, 2, 3, 4, 5, 5, 6, 7, 8, 8, 8, 9, 9, 10}
+    - here ,
+    - percentile of value `x` = (No. of values below `x`) * 100 / `n`
+
+    - so, percentile of 9 = 11 * 100 / 14 
+        - `78.57 %ile`
+
+    - this suggests that, 78.57 % of all the values in the set are less than 9.
+
+### Calculating value back from the percentile :
+- Value position = `percentile * (n + 1) / 100`
+- this returns a fraction lets say 3.75.
+- then identify the 3rd and 4th position in the set, and then take the average of the values.
+
+## Quartiles :
+    25%ile -- 1st Quartile
+    50%ile -- 2nd Quartile
+    75%ile -- 3rd quartile
+
+![Percentile](assets/image7.png)
+![Quartile](assets/image8.png)
+
+# 5 Number Summary :
+    1. Minimum (after removing outliers)
+    2. 1st Quartile (`Q1`)
+    3. Median
+    4. 3rd Quartile(`Q3`)
+    5. Maximum (after removing outliers)
+
+- We calculate the :
+    1. Lower fence value
+    2. Higher Fence Value
+
+> everything **lower than the lower fence value** and **higher than higher fence value** is considered as an outlier.
+
+- Lower fence = Q1 - 1.5(IQR)
+- Higher fence = Q3 + 1.5(IQR)
+> IQR : Inter Quartile Range = `Q3 - Q1`
+
+- Based on these 5 values we can define a plot called as `Box plot`
+> The plot used to identify the outlier is called the box plot.
+
+![5 Number summary](assets/image9.png)
+
+# Covariance and correlation :
+    Ovariance and correlation are 2 statistical measures used to determine the relationship between 2 variables.
+    Both are used to understand how changes in one variable are associated with another variable.
+
+## Covariance :
+    Covariance is a measure of how much 2 random variables change together. 
+    
+    If the variables tend to increase and decrease together, covariance is **positive**.
+
+    If one tends to increase and other decreases, covariance is **negative**.
+
+    Covariance helps us quantify the relationship between 2 variables.
+
+> cov( x, x ) = var( x )
+
+#### Advantages :
+    1. Quantifying Relationships
+
+#### Disadvantages :
+    1. Covariance does not have a specific limit value
+
+    2. Value of covariances ranges form `+inf` to `-inf`
+
+    3. If value of a covariance is greater than other, we still can not specify which covariance is stronger.
+
+![Covariance](assets/image10.png)
+
+## Correlation 
+    1. Pearson correlation coefficient
+    2. Spearman Rank correlation
+
+### 1. Pearson Correlation coefficient :
+    Limits the value from -1 to 1.
+
+    The more the value towards +1, the more positive correlated x, y are.
+
+    The more the value towards -1, the more negative correlated x, y are.
+
+    However, this is not able to capture the non-linear correlation
+
+![Pearson](assets/image11.png)
+
+### 2. Spearman Rank Correlation :
+    Captures the non-linear correlation to.
+
+    for linear , spearman coefficient is 1 or -1
+
+![Spearman](assets/image12.png)
+
+## Feature selection :
+
+![Feature Selection](assets/image13.png)
 

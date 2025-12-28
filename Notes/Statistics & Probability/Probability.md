@@ -708,3 +708,312 @@ Next question:
     Backbone of statistics & ML
     Used everywhere
 
+## (Standard Normal & Z-Score)
+
+## 4️⃣.9 Standard Normal Distribution
+
+The **Standard Normal Distribution** is just a **special Normal distribution**:
+Where:
+
+* Mean = **0**
+* Standard deviation = **1**
+
+### Why do we need it?
+
+Because:
+
+* Every Normal distribution has **different μ and σ**
+* We want **one universal reference distribution**
+
+So we **convert any Normal variable into Z**
+
+---
+
+## 4️⃣.10 Z-Score (Extremely important)
+
+### Formula
+
+![alt text](assets/image41.png)
+
+### Interpretation
+
+Z-score answers:
+
+> **How many standard deviations away from the mean is this value?**
+
+---
+
+### Example (real-world)
+
+* Mean exam score = 70
+* Std dev = 10
+* Student score = 85
+
+![alt text](assets/image40.png)
+
+👉 The student is **1.5σ above average**
+
+---
+
+## Why Z-scores matter in Data Science
+
+### 📊 Data Analysis
+
+* Outlier detection
+* Feature scaling
+* Comparing different metrics on the same scale
+
+### 🤖 Machine Learning
+
+* Gradient descent converges faster
+* Models assume normalized inputs
+* Distance-based models (KNN, SVM)
+
+### 🧠 Decision Making
+
+* Risk assessment
+* Performance benchmarking
+* Anomaly detection
+
+---
+
+### Mental model
+
+* Raw value → meaningless alone
+* Z-score → **context-aware**
+
+---
+
+## ⚠️ Common mistake
+
+❌ Applying Z-score when data is **not Normal**
+
+---
+
+Now let’s continue the course.
+
+---
+
+# 📘 Lesson 5: **Log-Normal Distribution**
+
+*(Normal — but in log space)*
+
+---
+
+## 1️⃣ What problem does Log-Normal solve?
+
+Log-Normal answers:
+
+> **What if values are always positive and grow multiplicatively?**
+
+![log normal](assets/image39.png)
+
+## 2️⃣ Real-world examples
+
+* Income & wealth
+* Stock prices
+* File sizes
+* Session durations
+* Response times
+* Product sales
+
+These **cannot be negative** and often have **long right tails**
+
+## 3️⃣ Probability density function
+
+![alt text](assets/image38.png)
+
+You don’t memorize this — you recognize **when to use it**.
+
+## 4️⃣ How does the graph behave?
+
+![Image](https://www.investopedia.com/thmb/dmWOsjhPLEXqOnOFh7_0v3E4wUs%3D/1500x0/filters%3Ano_upscale%28%29%3Amax_bytes%28150000%29%3Astrip_icc%28%29/dotdash_Final_Log_Normal_Distribution_Nov_2020-01-fa015519559f4b128fef786c51841fb9.jpg)
+
+![Image](https://www.researchgate.net/publication/327664780/figure/fig2/AS%3A680230062678016%401539190893047/a-Bars-histogram-of-the-log-normal-distribution-log-s-N-m-2-with-m-057-h-s.ppm)
+
+### Verbal visualization
+
+* Starts near zero
+* Long right tail
+* Strong right skew
+* Mean > Median > Mode
+
+## 5️⃣ Why Log-Normal improves problem solving
+
+### Ask yourself:
+
+> “Can this value be negative?”
+> “Does growth compound?”
+
+If yes → **Log-Normal**
+
+## 6️⃣ Data Science usage
+
+### 📊 EDA
+
+* Transform skewed data using log
+* Stabilize variance
+
+### 🤖 ML
+
+* Regression on log-transformed targets
+* Financial modeling
+
+### 🧠 Decision Making
+
+* Revenue forecasting
+* Risk modeling
+
+## ⚠️ Common mistake
+
+❌ Treating log-normal data as Normal
+
+---
+
+# 📘 Lesson 6: **Uniform Distribution**
+
+*(When everything is equally likely)*
+
+## Definition
+
+![formula](assets/image37.png)
+
+## Real-world examples
+
+* Random number generators
+* Sampling
+* Shuffling data
+* Simulation baselines
+
+## Graph behavior
+
+![Image](https://www.itl.nist.gov/div898/handbook/eda/section3/gif/unicdf.gif)
+
+![Image](https://deepdatascience.wordpress.com/wp-content/uploads/2017/03/uniform-vs-normal-distribution.png)
+
+* Flat rectangle
+* No preference
+* Constant probability
+
+## Usage in Data Science
+
+* Baseline modeling
+* Random initialization
+* Monte Carlo simulations
+
+---
+
+# 📘 Lesson 7: **Power Law Distribution**
+
+*(Few dominate, many are small)*
+
+## Core idea
+
+[
+P(X = x) \propto x^{-\alpha}
+]
+
+## Real-world examples
+
+* City sizes
+* Website traffic
+* Social media followers
+* Earthquakes
+
+## Graph behavior
+
+![Image](https://mathinsight.org/media/image/image/power_law_degree_distribution_scatter.png)
+
+![Image](https://www.statisticshowto.com/wp-content/uploads/2016/05/heavy-tailed.png)
+
+* Heavy tail
+* Scale-free
+* No typical average
+
+## Data Science usage
+
+* Network analysis
+* Fraud detection
+* Rare event modeling
+
+# 📘 Lesson 8: **Pareto Distribution**
+
+*(Concrete form of Power Law)*
+
+## Definition
+
+![alt text](assets/image36.png)
+
+## Real-world examples
+
+* 80–20 rule
+* Wealth distribution
+* Bug severity
+
+## Graph behavior
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Probability_density_function_of_Pareto_distribution.svg/330px-Probability_density_function_of_Pareto_distribution.svg.png)
+
+![Image](https://www.networkpages.nl/wp-content/uploads/2024/05/Figure2.png)
+
+
+## Usage
+
+* Business optimization
+* Risk concentration
+* Resource allocation
+
+# 🧠 CAPSTONE: Central Limit Theorem (CLT)
+
+
+## Statement (in plain English)
+
+> **The average of many independent samples tends to be Normal — regardless of the original distribution**
+
+
+## Why CLT is revolutionary
+
+* Justifies Normal assumptions
+* Enables confidence intervals
+* Enables hypothesis testing
+* Powers most statistics & ML
+
+## Visual intuition
+
+* Raw data → any shape
+* Sample means → Normal
+
+## Data Science implications
+
+### 📊 Estimation
+
+![formula](assets/image35.png)
+
+* Larger sample → tighter estimates
+* Uncertainty shrinks with data
+
+### 🤖 ML
+
+    Loss convergence
+    Model evaluation
+    Generalization understanding
+
+### 🧠 Decision Making
+
+    Forecast confidence
+    Risk intervals
+    A/B testing
+
+# 🧩 Final Mental Map (Extremely Important)
+
+| Problem Type      | Distribution       |
+| ----------------- | ------------------ |
+| Yes/No            | Bernoulli          |
+| Count successes   | Binomial           |
+| Events per time   | Poisson            |
+| Natural variation | Normal             |
+| Compare values    | Z-score            |
+| Positive skew     | Log-Normal         |
+| Equal randomness  | Uniform            |
+| Extreme dominance | Power Law / Pareto |
+

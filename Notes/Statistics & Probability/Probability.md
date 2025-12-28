@@ -216,6 +216,9 @@ We write:
 
 > 📌 There is no curve — just two bars
 
+<img width="574" height="381" alt="image" src="https://github.com/user-attachments/assets/9edfa4dd-7f12-41e1-8d08-09434286450d" />
+
+
 ### 5️⃣ Why Bernoulli matters for problem solving
 
     Ask yourself:

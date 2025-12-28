@@ -479,7 +479,7 @@ Let:
 * **λ (lambda)** = average number of events per interval
 
 ### Probability Mass Function
-![pmf](image.png)
+![pmf](assets/image33.png)
 ### Intuition behind the formula
 
     (e^λ) : probability of **no events**
@@ -612,7 +612,7 @@ You’re thinking **Normal distribution**.
 
 ### Probability Density Function (PDF)
 
-![pdf](image-1.png)
+![pdf](assets/image34.png)
 
 ### What parameters mean
 

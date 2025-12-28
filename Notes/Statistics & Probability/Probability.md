@@ -1017,3 +1017,18 @@ P(X = x) \propto x^{-\alpha}
 | Equal randomness  | Uniform            |
 | Extreme dominance | Power Law / Pareto |
 
+---
+---
+# Estimates :
+    It is a specified observed numerical value to estimate a population parameter.
+
+### 1. Point Estimate :
+
+    Single Numerical Value used to estimate an unknown population parameter
+
+    Example :
+        - sample mean is a point estimate of a population mean.
+
+### 2. Interval Estimate :
+
+    A range of values is used to estimate unknown population parameter.

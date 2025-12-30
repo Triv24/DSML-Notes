@@ -775,30 +775,19 @@ Z-score answers:
 * Performance benchmarking
 * Anomaly detection
 
----
-
 ### Mental model
 
 * Raw value → meaningless alone
 * Z-score → **context-aware**
 
----
-
 ## ⚠️ Common mistake
 
 ❌ Applying Z-score when data is **not Normal**
 
----
-
-Now let’s continue the course.
-
----
 
 # 📘 Lesson 5: **Log-Normal Distribution**
 
 *(Normal — but in log space)*
-
----
 
 ## 1️⃣ What problem does Log-Normal solve?
 
